@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "neramind-backend"
+version = "0.1.0"
+description = ""
+authors = ["sushmit <sushmitsarmah@gmail.com>"]
+readme = "README.md"
+packages = [{include = "neramind_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+stability-sdk = "^0.8.4"
+openai = "^1.2.0"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0.post1"
+lighthouseweb3 = "^0.1.4"
+Pillow = "^10.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
