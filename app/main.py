@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.image_gen.gen_image import ImageGen
 from app.image_gen.story_gen import AIStory
@@ -9,6 +10,14 @@ from app.config import PromptRequest
 app = FastAPI()
 img_gen = ImageGen()
 ai_story = AIStory()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():

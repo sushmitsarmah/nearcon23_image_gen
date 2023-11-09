@@ -51,8 +51,6 @@ class AIStory:
         panel_count = panel_format[fmt]["count"]
         prompt = template.format(panel_count, story)
 
-        print(prompt)
-
         story_panels = client.chat.completions.create(
             messages=[
                 {
@@ -67,5 +65,9 @@ class AIStory:
             frequency_penalty=0,
             presence_penalty=0
         )
-        panels = [x for x in clean_panel_prompt(story_panels.choices[0].message.content).split("\n") if x != ""]
+        panels = [
+            x for x in clean_panel_prompt(story_panels.choices[0].message.content).split("\n")
+        ]
+        exclude = [x for x in panels if x == "" or "Prompt" in x or "Panel" in x]
+        panels = [x for x in panels if x not in exclude]
         return panels

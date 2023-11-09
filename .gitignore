@@ -3,3 +3,4 @@ __pycache__
 gen_image.png
 notebooks
 .DS_Store
+.env
